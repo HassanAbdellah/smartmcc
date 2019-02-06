@@ -52,7 +52,7 @@ include 'header.php';
                     <hr size="80%">
                     <div class="input-group">
                         <span class="glyphicon glyphicon-file"></span>
-                        <label><a href="Reserve.php">Reserve an appointment</a> </label>
+                        <label class="active" for="Reserve"><a href="Reserve.php">Reserve an appointment</a> </label>
                     </div>
 
 
