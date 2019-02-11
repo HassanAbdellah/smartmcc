@@ -1,7 +1,7 @@
 <!--
 /**
  * Created by Hassan Abdella.
- * Date: 02/05/2019
+ * Date: 02/10/2019
  */-->
  
 <?php
@@ -43,24 +43,33 @@ include 'header.php';
                             <button type="submit" name="searchUser" style="background-color:transparent; border: transparent" class="glyphicon glyphicon-search"></button>
                         </div>
                     </div>
-
+                    <hr size="80%">
+                    <div class="input-group">
+                        <span class="glyphicon glyphicon-edit"></span>
+                        <label><a href="update.php">Edit Profile</a> </label>
+                    </div>
     <!-- Reservation -->
                     <hr size="80%">
                     <div class="input-group">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                        <label class="active" for="Reserve"><a href="Reserve.php">Reserve an appointment</a> </label>
+                        <span class="glyphicon glyphicon-file"></span>
+                        <label class="active" for="Reserve"><a href="appointments.php">Appointments</a> </label>
                     </div>
 
-                    <hr size="80%">
-                    <div class="input-group">
-                        <span class="glyphicon glyphicon-file"></span>
-                        <label><a href="Appointments_user.php">My Appointments</a> </label>
-                    </div>
 
                     <hr size="80%">
                     <div class="input-group">
                         <span class="glyphicon glyphicon-eye-open"></span>
-                        <label><a href="viewdoctor.php">View all Doctors</a> </label>
+                        <label><a href="viewuser.php">View all Users</a> </label>
+                    </div>
+                    <hr size="80%">
+                    <div class="input-group">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <label><a href="viewdoctor_admin.php">View all Doctors</a> </label>
+                    </div>
+                    <hr size="80%">
+                    <div class="input-group">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <label><a href="Add_doctor.php">Add Doctor</a> </label>
                     </div>
                     <hr size="80%">
                     <div class="input-group">
@@ -77,7 +86,7 @@ include 'header.php';
                     <!-- Profile pic -->
                 <div class="col-sm-5">
                     <div class="col-sm-12 img-circle" align="middle">
-                        <img src="img/uploads/<?php echo $alt ?>" class="img-circle" height="250px" width="250px"
+                        <img src="img/admins/<?php echo $alt ?>" class="img-circle" height="250px" width="250px"
                              alt="Profile pic">
                     </div>
                 </div>
@@ -85,7 +94,7 @@ include 'header.php';
                 <div class="col-sm-4">
                     <div class="input-group">
                         <span class="glyphicon glyphicon-user"></span>
-                        <label><?php echo "Hello: <b><font color='green'>" . $_SESSION['fName'] . " " . $_SESSION['lName'] . "</font> </b>" ?></label>
+                        <label><?php echo "Hello Admin: <b><font color='green'>" . $_SESSION['fName'] . " " . $_SESSION['lName'] . "</font> </b>" ?></label>
                     </div>
                     <hr size="80%" noshade>
                     <div class="input-group">
@@ -111,16 +120,6 @@ include 'header.php';
                     <div class="input-group">
                         <span class="glyphicon glyphicon-time"></span>
                         <label><?php echo "Birth date: <b><font color='green'>" . $_SESSION['bdate'] . "</font></b>" ?></label>
-                    </div>
-                    <hr size="80%">
-                    <div class="input-group">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                        <label><?php echo "Reg. Date: <b><font color='green'>" . $_SESSION['reg_date'] . "</font></b>" ?></label>
-                    </div>
-                    <hr size="80%">
-                    <div class="input-group">
-                        <span class="glyphicon glyphicon-time"></span>
-                        <label><?php echo "Last update: <b><font color='green'>" . $_SESSION['upd_date'] . "</font></b>" ?></label>
                     </div>
                     <hr size="80%">
                 </div>

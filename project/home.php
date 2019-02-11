@@ -145,6 +145,7 @@ include 'header.php';
                                     <input type="submit" id="login" name="login" class="btn btn-primary btn-sm" value="Login">
                                 </div>
                             </div>
+                            <center><label><span>Log in as</span></label><a href="home_admin.php"> admin</a></center>
                         </form>
                     </div>
                     <div class="tab-pane" id="Registration">

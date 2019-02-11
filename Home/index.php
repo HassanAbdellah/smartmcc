@@ -1,10 +1,42 @@
+<style>
+    .userbox {
+        background: #fff none repeat scroll 0 0;
+        box-shadow: 0 0 1px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .img{
+        height: 100px;
+        width: 100px;
+    }
+    .dropdown {
+    position: relative;
+    display: block;
+
+    }
+
+    .dropdown-content {
+    display: none;
+    position:absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 1px;
+    padding: 20px;
+    margin-bottom: 20px;
+    }
+
+    .dropdown:hover .dropdown-content {
+     display: block;
+     opacity: 0.75;
+    }
+
+</style>
 <?php include('server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clinix | <?php echo $_SESSION['username'] ?></title>
+<title>HOME - CLINIX</title>
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -53,7 +85,7 @@
         <li><a href="#portfolio" class="page-scroll">Gallery</a></li>
         <li><a href="#team" class="page-scroll">Doctors</a></li>
         <li><a href="#call-reservation" class="page-scroll">Contact</a></li>
-        <li><a href="http://localhost/SmartMCC/project/index.php" class="login">Log in || Sign Up</a></li>
+        <li><a href="http://localhost/SmartMCC/project/index.php" target="_blank">Log in || Sign Up</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
