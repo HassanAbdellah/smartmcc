@@ -49,9 +49,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about" class="page-scroll">About</a></li>
-        <li><a href="#restaurant-menu" class="page-scroll">Menu</a></li>
+        <li><a href="#restaurant-menu" class="page-scroll">Doctors</a></li>
         <li><a href="#portfolio" class="page-scroll">Gallery</a></li>
-        <li><a href="#team" class="page-scroll">Doctors</a></li>
         <li><a href="#call-reservation" class="page-scroll">Contact</a></li>
         <li><a href="http://localhost/SmartMCC/project/index.php" target="_blank">Log in || Sign Up</a></li>
       </ul>
@@ -102,113 +101,49 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed.</p>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <div class="menu-section">
-          <h2 class="menu-section-title">Dentists</h2>
-          <hr>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Mona Aboubakr </div>
-            <div class="menu-item-price"> $35 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Omar Hasanin </div>
-            <div class="menu-item-price"> $30 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Fayza Shehata </div>
-            <div class="menu-item-price"> $30 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Mona Khalil Mansour </div>
-            <div class="menu-item-price"> $30 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <div class="menu-section">
-          <h2 class="menu-section-title">Cardiologists</h2>
-          <hr>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Ahmed Zayed </div>
-            <div class="menu-item-price"> $45 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Mohamed Mansour </div>
-            <div class="menu-item-price"> $30 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Saeed Hamdan </div>
-            <div class="menu-item-price"> $30 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <div class="menu-section">
-          <h2 class="menu-section-title">internists</h2>
-          <hr>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Farouk Moustafa </div>
-            <div class="menu-item-price"> $45 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Saber Hussien </div>
-            <div class="menu-item-price"> $350 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Sayed Suilam </div>
-            <div class="menu-item-price"> $30 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam.. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. William Issac </div>
-            <div class="menu-item-price"> $30 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <div class="menu-section">
-          <h2 class="menu-section-title">neurologists</h2>
-          <hr>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Hatem Masoud </div>
-            <div class="menu-item-price"> $35 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Jamal Hassan </div>
-            <div class="menu-item-price"> $30 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. George Zaky </div>
-            <div class="menu-item-price"> $30 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name"> Dr. Amal Atia </div>
-            <div class="menu-item-price"> $30 </div>
-            <div class="menu-item-description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis sed dapibus leo nec ornare diam. </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <?php
+    require '../project/config.php';
+    $d = mysqli_query($con, "SELECT * FROM doctors ORDER BY specialization");
+    $num = mysqli_num_rows($d);
+
+    echo "<div class='container'>";
+    while($num>0) {
+        $result = mysqli_fetch_assoc($d);
+        $id=$result['id'];
+        $name = $result['name'];
+        $specialization = $result['specialization'];
+        $info = $result['info'];
+        $file_name=$result['file_name'];
+        $file_ext=$result['file_ext'];
+        $working_time=$result['working_time'];
+        $location_map=$result['location_map'];
+        $location_text=$result['location_text']; 
+        $phones=$result['phones'];
+        $fees=$result['fees'];
+        $img=$file_name.'.'.$file_ext;
+        echo "<div class='col-xs-12 col-sm-12'>
+                <div class='menu-section'>
+                  <div class='menu-item'>
+                    <div class='menu-item-name'> $name </div>
+                    <div class='menu-item-description'>specialization: <strong>$specialization </strong></div>
+                    <div class='menu-item-price'> $fees $</div>
+                    <div class='menu-item-description'>Informations: $info </div>
+                    <div class='menu-item-description'>Location: $location_text </div>
+                  </div>
+                </div>
+              </div>";
+        $num--;
+    }
+    echo"</div>";
+    ?>
+
+
+
 </div>
+
+    
+</div>
+
 <!-- Portfolio Section -->
 <div id="portfolio">
   <div class="section-title text-center center">
@@ -226,7 +161,7 @@
             <ol class="type">
               <li><a href="#" data-filter="*" class="active">All</a></li>
               <li><a href="#" data-filter=".breakfast">Clinix</a></li>
-              <li><a href="#" data-filter=".lunch">Doctors</a></li>
+              <li><a href="#" data-filter=".doctors">Doctors</a></li>
               <li><a href="#" data-filter=".dinner">Receptions</a></li>
             </ol>
           </li>
@@ -236,163 +171,47 @@
     </div>
     <div class="row">
       <div class="portfolio-items">
-        <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/01-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/01-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 dinner">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/02-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/02-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/03-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/03-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/04-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/04-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 dinner">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/05-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/05-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 lunch">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/06-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/06-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 lunch">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/07-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/07-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/08-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/08-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 dinner">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/09-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/09-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 lunch">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/10-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/10-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 lunch">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/11-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/11-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-4 breakfast">
-          <div class="portfolio-item">
-            <div class="hover-bg"> <a href="img/portfolio/12-large.jpg" title="Dish Name" data-lightbox-gallery="gallery1">
-              <div class="hover-text">
-                <h4>Dish Name</h4>
-              </div>
-              <img src="img/portfolio/12-small.jpg" class="img-responsive" alt="Project Title"> </a> </div>
-          </div>
-        </div>
+        <?php
+          require '../project/config.php';
+          $d = mysqli_query($con, "SELECT * FROM doctors");
+          $num = mysqli_num_rows($d);
+          while($num>0) {
+              $result = mysqli_fetch_assoc($d);
+              $id=$result['id'];
+              $name = $result['name'];
+              $specialization = $result['specialization'];
+              $info = $result['info'];
+              $file_name=$result['file_name'];
+              $file_ext=$result['file_ext'];
+              $working_time=$result['working_time'];
+              $location_map=$result['location_map'];
+              $location_text=$result['location_text'];
+              $phones=$result['phones'];
+              $fees=$result['fees'];
+              $img=$file_name.'.'.$file_ext;
+              
+              echo"<div class='col-sm-6 col-md-4 col-lg-4 doctors'>
+                        <div class='portfolio-item'>
+                          <div class='hover-bg'>
+                            <div class='hover-text'>
+                              <h4>D. $name</h4>
+                            </div>
+                            <img style='width:100%; height:300px;' src='../project/img/doctors/$img' class='img-responsive' alt='$name'> </div>
+                        </div>
+                    </div>
+              ";
+              $num--;
+          }
+      ?>
       </div>
     </div>
   </div>
 </div>
-<!-- Team Section -->
-<div id="team" class="text-center">
-  <div class="overlay">
-    <div class="container">
-      <div class="col-md-10 col-md-offset-1 section-title">
-        <h2>Meet Our Doctors</h2>
-        <hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed dapibus leonec.</p>
-      </div>
-      <div id="row">
-        <div class="col-md-4 team">
-          <div class="thumbnail">
-            <div class="team-img"><img src="img/team/01.jpg" alt="..."></div>
-            <div class="caption">
-              <h3>Mike Doe</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 team">
-          <div class="thumbnail">
-            <div class="team-img"><img src="img/team/02.jpg" alt="..."></div>
-            <div class="caption">
-              <h3>Chris Doe</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 team">
-          <div class="thumbnail">
-            <div class="team-img"><img src="img/team/03.jpg" alt="..."></div>
-            <div class="caption">
-              <h3>Ethan Doe</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 <!-- Call Reservation Section -->
 <div id="call-reservation" class="text-center">
   <div class="container">
-    <h2>Want to make a reservation? Call <strong>1-887-654-3210</strong> or click here
+    <h2>Want to make a reservation? Call <strong>01068478576</strong> or <a target="_blank" style="color: Gold;" href="../project/index.php"><strong>Log in</strong></a>
     <strong><a href="http://localhost/project/Reserve.php" style ="visibility:hidden">Reservation</a></strong></h2>  
   </div>
 </div>
