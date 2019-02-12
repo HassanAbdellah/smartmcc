@@ -1,35 +1,3 @@
-<style>
-    .userbox {
-        background: #fff none repeat scroll 0 0;
-        box-shadow: 0 0 1px;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-    .img{
-        height: 100px;
-        width: 100px;
-    }
-    .dropdown {
-    position: relative;
-    display: block;
-
-    }
-
-    .dropdown-content {
-    display: none;
-    position:absolute;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 1px;
-    padding: 20px;
-    margin-bottom: 20px;
-    }
-
-    .dropdown:hover .dropdown-content {
-     display: block;
-     opacity: 0.75;
-    }
-
-</style>
 <?php include('server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
