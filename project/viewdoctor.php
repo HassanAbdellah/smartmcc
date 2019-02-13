@@ -8,7 +8,6 @@
     include 'header.php';
 ?>
 
-
 <style>
     .userbox {
         background: #fff none repeat scroll 0 0;

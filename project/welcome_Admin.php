@@ -43,11 +43,7 @@ include 'header.php';
                             <button type="submit" name="searchUser" style="background-color:transparent; border: transparent" class="glyphicon glyphicon-search"></button>
                         </div>
                     </div>
-                    <hr size="80%">
-                    <div class="input-group">
-                        <span class="glyphicon glyphicon-edit"></span>
-                        <label><a href="update.php">Edit Profile</a> </label>
-                    </div>
+
     <!-- Reservation -->
                     <hr size="80%">
                     <div class="input-group">
@@ -68,19 +64,20 @@ include 'header.php';
                     </div>
                     <hr size="80%">
                     <div class="input-group">
-                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <span class="glyphicon glyphicon-plus"></span>
                         <label><a href="Add_doctor.php">Add Doctor</a> </label>
+                    </div>                    
+                    <hr size="80%">
+                    <div class="input-group">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <label><a href="Add_date.php">Add Available Date</a> </label>
                     </div>
                     <hr size="80%">
                     <div class="input-group">
                         <span class="glyphicon glyphicon-log-out"></span>
                         <label><a href="logout.php">Logout</a> </label>
                     </div>
-                    <hr size="80%">
-                    <div class="input-group">
-                        <span class="glyphicon glyphicon-trash"></span>
-                        <label><a href="delete.php">Deactivate Account</a> </label>
-                    </div>
+
                     <hr size="80%">
                 </div>
                     <!-- Profile pic -->

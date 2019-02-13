@@ -9,14 +9,13 @@
         var newfName=document.getElementById('newfName').value;
         var newlName=document.getElementById('newlName').value;
         var newGender=document.getElementById('newGender').value;        
-        var newEmail=document.getElementById('newEmail').value;
         var newMobile=document.getElementById('newMobile').value;
         var newPassword=document.getElementById('newPassword').value;
         var newConfirmPassword=document.getElementById('newConfirmPassword').value;
         var newAddress=document.getElementById('newAddress').value;
         var newBdate=document.getElementById('newBdate').value;
 
-        if(newfName=="" || newlName==""  || newGender=="" || newEmail=="" || newMobile=="" || newPassword==""  || newConfirmPassword==""  || newAddress==""  || newBdate==""){
+        if(newfName=="" || newlName==""  || newGender=="" || newMobile=="" || newPassword==""  || newConfirmPassword==""  || newAddress==""  || newBdate==""){
             alert("Fill all field values");
             return false;
         }
@@ -69,7 +68,6 @@ if (isset($_FILES['newFile']['name'])) {
         $newfName = $_REQUEST['newfName'];
         $newlName = $_REQUEST['newlName'];
         $newGender = $_REQUEST['newGender'];
-        $newEmail = $_REQUEST['newEmail'];
         $newMobile = $_REQUEST['newMobile'];
         $newPassword = $_REQUEST['newPassword'];
         $newAddress = $_REQUEST['newAddress'];
@@ -81,9 +79,8 @@ if (isset($_FILES['newFile']['name'])) {
         if ($num > 0) {
             echo "<script>alert('Email already exists choose another email');</script>";
         } else {
-            $result = mysqli_query($con, "UPDATE userinfo SET fName='$newfName', lName='$newlName', gender='$newGender', email='$newEmail', mobile='$newMobile',
+            $result = mysqli_query($con, "UPDATE userinfo SET fName='$newfName', lName='$newlName', gender='$newGender', mobile='$newMobile',
             password='$newPassword', address='$newAddress', bdate='$newBdate',file_name='$new_file_name', file_ext='$new_file_ext', upd_date='$new_upd_date' WHERE email='$email'");
-            $_SESSION['loginEmail'] = $newEmail;
             $_SESSION['fName'] = $newfName;
             $_SESSION['lName'] = $newlName;
             $_SESSION['gender'] = $newGender;
@@ -128,18 +125,14 @@ if (isset($_FILES['newFile']['name'])) {
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-6">
-                        <input type="gender" class="form-control" id="newGender" name="newGender" placeholder="New Gender"/>
-                    </div>
-                </div> 
-                <div class="form-group">
-                    <div class="col-sm-6">
-                        <input type="email" class="form-control" id="newEmail" name="newEmail" placeholder="New Email"/>
-                    </div>
-                    <div class="col-sm-6">
+                	 <div class="col-sm-6">
                         <input type="number" class="form-control" id="newMobile" name="newMobile" placeholder="New Mobile"/>
                     </div>
-                </div>
+                    <div class="col-sm-6">
+                        <input type="gender" class="form-control" id="newGender" name="newGender" placeholder="Edit Gender"/>
+                    </div>
+                </div> 
+
                 <div class="form-group">
                     <div class="col-sm-6">
                         <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="New Password"/>

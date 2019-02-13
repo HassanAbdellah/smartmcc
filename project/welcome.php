@@ -43,7 +43,11 @@ include 'header.php';
                             <button type="submit" name="searchUser" style="background-color:transparent; border: transparent" class="glyphicon glyphicon-search"></button>
                         </div>
                     </div>
-
+                    <hr size="80%">
+                    <div class="input-group">
+                        <span class="glyphicon glyphicon-edit"></span>
+                        <label><a href="update.php">Edit Profile</a> </label>
+                    </div>
     <!-- Reservation -->
                     <hr size="80%">
                     <div class="input-group">

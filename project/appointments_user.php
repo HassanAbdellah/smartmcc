@@ -4,6 +4,10 @@
  * Date: 02/10/2019
  */-->
 
+
+<?php
+    include 'header.php';
+?>
 <style>
     .userbox {
         background: #fff none repeat scroll 0 0;
@@ -24,9 +28,12 @@
 
 </style>
 
-<?php
-    include 'header.php';
+<div class='userbox'>
+<label>Appointment</label><br>
+    <?php
     session_start();
+
+    if (isset($_SESSION['loginEmail'])) {
     require 'config.php';
     $d = mysqli_query($con, "SELECT * FROM userinfo");
     $num = mysqli_num_rows($d);
@@ -35,27 +42,24 @@
         $id=$result['id'];
         $fName = $result['fName'];
         $lName = $result['lName'];
-        $n = mysqli_query($con, "SELECT * FROM user_reservation WHERE user_id = $id" );
-        if(mysqli_num_rows($n)){
-            $dat_res = mysqli_fetch_assoc($n);
-            $id=$dat_res['id'];
-            $user_id = $dat_res['user_id'];
-            $doctor_id = $dat_res['doctor_id'];
-            $date=$dat_res['date'];
-            $time = $dat_res['time'];
-            $div= '<div >';
-            while($dat_res=mysqli_fetch_array($n)){
-            $div.='<div class="card">'." Appointment Number : ".$dat_res['id']." Your name is : ".$result['fName'].$result['lName']." User id is ".$dat_res['user_id']." and Doctor id : ".$dat_res['doctor_id']." at ".$dat_res['date']." - ".$dat_res['time'].'</div>'."<hr>";
+        $email = $result['email'];        
+
+        $sql_doc=mysqli_query($con,"SELECT * FROM user_reservation WHERE user_id = '".$id."' ");
+        if(mysqli_num_rows($sql_doc)){
+            $div= '<div name="select">';
+            while($rs=mysqli_fetch_array($sql_doc)){
+                $div.='<label value="'.$rs['id'].'">'."Day: ".$rs['date']." time ".$rs['time'].'</label>';
+                echo $div;
             }
+            echo'</div>';
         }
-        $div.='</div>';
-        echo $div;
         $num--;
+        $div="";
     }
-
-    ?>
-
-</div>
+    } else {
+    header('location:error.php');
+    }
+    ?></div>
 <div class="container">
     <div class="row">
         <div class="col-sm-12">

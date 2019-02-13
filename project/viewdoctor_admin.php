@@ -8,7 +8,6 @@
     include 'header.php';
 ?>
 
-
 <style>
     .userbox {
         background: #fff none repeat scroll 0 0;
@@ -80,7 +79,6 @@
                             <div class='input-group'><span class='glyphicon glyphicon-file'></span>
                                 <label>informations: <b><font color='green'> $info </font></b></label>
                             </div>
-
                         </div>
                     </div>
                     <div class='col-sm-4'>
@@ -108,7 +106,9 @@
                             <div class='input-group'><span class='glyphicon glyphicon-time'></span>
                                 <label>available dates: </label><br>".$select."</div>
                             </div>
-                    </div>   
+
+                    </div>
+  
                 </div>
                 <div class='col-sm-2'></div>
             </div>";
