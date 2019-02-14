@@ -111,11 +111,12 @@ if (isset($_POST['reserve'])) {
                         <hr size="80%" noshade>
                         <div class="input-group">
                             <label for="time">Best time to call you</label><br>
-                            <select name="time" style="width: 90%;" value="<?php echo $time; ?>">
+                            <input type="time" name="time" style="width: 90%;" value="<?php echo $time; ?>">
+                            <!--<select name="time" style="width: 90%;" value="">
                                 <option value="Morning">Morning</option>
                                 <option value="Afternoon">Afternoon</option>
                                 <option value="Evening">Evening</option>
-                            </select>
+                            </select>-->
                         </div>
                         <hr size="80%" noshade>
                         <div class="input-group">
