@@ -57,7 +57,7 @@ if(isset($_REQUEST['login'])){
         $_SESSION['file_ext']=$file_ext;
         $_SESSION['reg_date']=$reg_date;
         $_SESSION['upd_date']=$upd_date;
-        header('location:welcome.php');
+        header('location:timeline/timeline.php');
     }
     else{
         echo"<div class='alert alert-danger' role='alert'>
@@ -111,7 +111,7 @@ if (isset($_FILES['file']['name'])) {
             $_SESSION['file_ext']=$file_ext;
             $_SESSION['reg_date']=$reg_date;
             $_SESSION['upd_date']=$upd_date;
-            header('location:welcome.php');
+            header('location:timeline/timeline.php');
         }
     }
 }
@@ -155,7 +155,7 @@ include 'header.php';
                                     <div class="col-md-4"></div>
                                     <div class="col-md-4">
                                         <label for="file" class="col-sm-10 control-label">
-                                            <img src="img/dummy.png" style="border:2px solid darkgray; border-radius:30%; height: 100px; width:100px;"><br>
+                                            <img src="img/test.jpg" style="border:2px solid darkgray; border-radius:30%; height: 100px; width:100px;"><br>
                                             <label for="file" class="glyphicon glyphicon-edit">Upload pic</label>
                                         </label>
                                         <input type="file" class="form-control" id="file" name="file" style="display: none" value="">
@@ -173,9 +173,14 @@ include 'header.php';
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-6">
-                                    <input type="gender" class="form-control" id="gender" name="gender" placeholder="gender"/>
-                                </div>
-                            </div> 
+                                    <label>Gender</label>
+                                      <select id="gender" name="gender" >
+                                        <option value="0">Male</option>
+                                        <option value="1">Female</option>
+                                      </select>
+                            </div>
+                            </div>
+
                             <div class="form-group">
                                 <div class="col-sm-6">
                                     <input type="email" class="form-control" id="email" name="email" placeholder="Email"/>
@@ -205,6 +210,7 @@ include 'header.php';
                                               rows="3" />
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-sm-12">
                                     <input type="submit" id="register" name="register" class="btn btn-primary btn-sm btn-block" onclick="return check()" value="Register & Continue">

@@ -12,7 +12,7 @@ $user_id = "";
 $id = "";
 $specialization ="";
 $date = "";
-$time ="";
+//$time ="";
 $doctor_id ="";
 $row = "";
 
@@ -22,47 +22,99 @@ $sql_user=mysqli_query($con,$mmm);
 if(mysqli_num_rows($sql_user)){
     $row = mysqli_fetch_array($sql_user);
     $user_id = $row['id'];
-    //echo ($user_id);
-    //$sel= '<select name="sel">';
-    //while($us=mysqli_fetch_array($sql_user)){
-    //$sel.='<option value="'.$us['id'].'">'.$us['id'].'</option>';
-    //}
+
 }
 
 if (isset($_POST['reserve'])) {
-  // receive all input values from the form
-  $date = mysqli_real_escape_string($con, $_POST['date']);
-  $time = mysqli_real_escape_string($con, $_POST['time']);
-  $doctor_id = mysqli_real_escape_string($con, $_POST['select']);
-
-  // form validation: ensure that the form is correctly filled ...
-  // by adding (array_push()) corresponding error unto $errors array
-  if (empty($date)) { array_push($errors, "date of appointment is required"); }
-  if (empty($time)) { array_push($errors, "time is required"); }
-  if (empty($doctor_id)) { array_push($errors, "doctors is required"); }
-  // Finally, register user if there are no errors in the form
-   if (count($errors) == 0) {
-    $qulii = "INSERT INTO user_reservation (user_id, doctor_id, date, time)
-    VALUES('$user_id', '$doctor_id', '$date', '$time')";
+    $date = mysqli_real_escape_string($con, $_POST['date']);
+    $doctor_id = mysqli_real_escape_string($con, $_POST['select']);
+    $time = mysqli_real_escape_string($con, $_POST['time']);
+    $qulii = "INSERT INTO user_reservation (user_id, doctor_id, date, time, status)
+    VALUES('$user_id', '$doctor_id', '$date', '$time','0')";
     if(mysqli_query($con, $qulii)){
-    header('location: index.php');
+    //Delete date from available
+    //mysqli_query($con,"DELETE FROM available_dates WHERE id =$availabledate_id");
+    header('location: timeline/timeline.php');
     }else{
       echo mysqli_error($con);
     }
-    //echo "Everything OK";
-  }
 }
+
+
+
+  $query = "SELECT id,name,specialization FROM doctors";
+  $result = $con->query($query);
+
+  while($row = $result->fetch_assoc()){
+    $docs[] = array("id" => $row['id'], "val" => "Dr. ".$row['name']." | ".$row['specialization']);
+  }
+
+  $query = "SELECT * FROM available_dates";
+  $result = $con->query($query);
+
+  while($row = $result->fetch_assoc()){
+    $appo[$row['doctor_id']][] = array("id" => $row['id'], "val" => $row['date'],"val2" => $row['time']);
+  }
+
+
+  $jsonCats = json_encode($docs);
+  $jsonSubCats = json_encode($appo);
+
 
 ?>
 
 <!DOCTYPE html>
+  <head>
+    <script type='text/javascript'>
+      <?php
+        echo "var docs = $jsonCats; \n";
+        echo "var appo = $jsonSubCats; \n";
+
+      ?>
+      function loadCategories(){
+        var select = document.getElementById("categoriesSelect");
+        select.onchange = updateSubCats;
+        for(var i = 1; i <= docs.length; i++){
+          select.options[(i)] = new Option(docs[(i-1)].val,docs[(i-1)].id);          
+        }
+      }
+      function updateSubCats(){
+        var catSelect = this;
+        var catid = this.value;
+        var subcatSelect = document.getElementById("subcatsSelect");
+        subcatSelect.onchange = updateSubCats2;
+        subcatSelect.options.length = 0; //delete all options if any present
+        subcatSelect.options[0] = new Option("Select Date");
+        document.getElementById("subcatsSelect").options[0].disabled = true;
+        for(var i = 1; i <= appo[catid].length; i++){
+            subcatSelect.options[i] = new Option(appo[catid][(i-1)].val,appo[catid][(i-1)].id);
+        }
+      }
+
+      function updateSubCats2(){
+        //var X = this;
+        var Xid = this.value;
+        //document.write(Xid);
+        var subcatSelect2 = document.getElementById("subcatsSelect2");
+        subcatSelect2.options.length = 0; //delete all options if any present
+        subcatSelect2.options[0] = new Option("Select Time");
+        document.getElementById("subcatsSelect2").options[0].disabled = true;
+        /* Xid --> id of selected row in available date
+        {
+            subcatSelect2.options[] = new Option(appo[][()].val,appo[][()].id);
+        }*/
+      }
+
+
+    </script>
+  </head>
 <html>
 <head>
     <title>Reserve</title> 
     <!--<link rel="icon" href="IMG/logo.png"">-->
 </head>  
 
-<body>
+<body onload='loadCategories()'>
 
     <center><h1>Doctor Appointment Form</h1><center>
     <div class="container">
@@ -70,23 +122,10 @@ if (isset($_POST['reserve'])) {
             <form action="Reserve.php" method="post">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="input-group">
-                            <label for="specialization" name="specialization">Doctor</label><br>
-                                <?php 
-                                    $sql_doc=mysqli_query($con,"SELECT id,name,specialization FROM doctors ORDER BY specialization");
-                                    if(mysqli_num_rows($sql_doc)){
-                                        $select= '<select name="select">';
-                                        while($rs=mysqli_fetch_array($sql_doc)){
-                                        $select.='<option value="'.$rs['id'].'">'."DR.".$rs['name']." -".$rs['specialization'].'</option>';
-                                        }
-                                    }
-                                    $select.='</select>';
-                                    echo $select;
-                                ?>
-                        </div>
+
                         <hr size="80%" noshade>
                         <div class="input-group">
-                            <label for="user_id" >Your ID is : </label><br>
+                            <label for="user_id" >Your ID is : </label>
                                 <?php 
                                     $mmm = "SELECT * FROM userinfo WHERE email = '" . $_SESSION['loginEmail'] . "'";
                                     $sql_user=mysqli_query($con,$mmm);
@@ -103,21 +142,24 @@ if (isset($_POST['reserve'])) {
                                     //echo $sel;
                                 ?>
                         </div>
-                        <hr size="80%" noshade>
-                        <div class="input-group">
-                            <label for="date">Date of appointment</label><br>
-                            <input type="date" name="date" placeholder="when?!" style="width: 90%;" value="<?php echo $date; ?>">
+                        <div>
+                            <select name='select' id='categoriesSelect'>
+                                <option disabled selected value>Select Doctor</option>
+                            </select>
+
+                            <div class="input-group">
+                                <label for="date">Available Day</label><br>
+                                <select name='date' id='subcatsSelect'>
+                                </select>    
+                            </div>
+                            <div class="input-group">
+                                <label for="time">Best time to call you</label><br>
+                                <select name='time' id='subcatsSelect2'>
+                                </select> 
+                            </div>                        
                         </div>
-                        <hr size="80%" noshade>
-                        <div class="input-group">
-                            <label for="time">Best time to call you</label><br>
-                            <input type="time" name="time" style="width: 90%;" value="<?php echo $time; ?>">
-                            <!--<select name="time" style="width: 90%;" value="">
-                                <option value="Morning">Morning</option>
-                                <option value="Afternoon">Afternoon</option>
-                                <option value="Evening">Evening</option>
-                            </select>-->
-                        </div>
+
+
                         <hr size="80%" noshade>
                         <div class="input-group">
                             <button type="submit" class="btn" name="reserve" >RESERVE</button><br>
