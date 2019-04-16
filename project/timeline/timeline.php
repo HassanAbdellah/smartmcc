@@ -25,6 +25,8 @@ include '../header.php';
 
     <script>
         $(document).ready(function(){
+        $('#content').load("post.php");
+
         // updating the view with notifications using ajax
         function load_unseen_notification(view = '')
         {
@@ -41,6 +43,7 @@ include '../header.php';
                         $('.count').html(data.unseen_notification);
                     }
                 }
+
             });
         }
         load_unseen_notification();
@@ -55,6 +58,17 @@ include '../header.php';
         }, 5000);
         });
     </script>
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+        body {
+            color: #7f8c8d;
+            font-size: 14px;
+            background-color: #ededed; }
+    </style>
 </head>
 
 <body>
@@ -98,8 +112,7 @@ include '../header.php';
 <div class="container">
     <div class="container-fluid">
         <div class="row">
-            <form method="post">
-                <div class="col-sm-3">
+                <div class="col-6 col-md-4" >
                     <div class="input-group">
                         <span class="glyphicon glyphicon-user"></span>
                         <label>My Account </label>
@@ -146,8 +159,7 @@ include '../header.php';
                     </div>
                     <hr size="80%">
                 </div>
-
-              </form>
+                <div class="col-12 col-md-8" id="content"></div>
             </div>
           </div>
         </div>
