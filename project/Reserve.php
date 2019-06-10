@@ -12,9 +12,10 @@ $user_id = "";
 $id = "";
 $specialization ="";
 $date = "";
-//$time ="";
+$time ="";
 $doctor_id ="";
 $row = "";
+$resID = "";
 
 
 $mmm = "SELECT * FROM userinfo WHERE email = '" . $_SESSION['loginEmail'] . "'";
@@ -25,22 +26,6 @@ if(mysqli_num_rows($sql_user)){
 
 }
 
-if (isset($_POST['reserve'])) {
-    $date = mysqli_real_escape_string($con, $_POST['date']);
-    $doctor_id = mysqli_real_escape_string($con, $_POST['select']);
-    $time = mysqli_real_escape_string($con, $_POST['time']);
-    $qulii = "INSERT INTO user_reservation (user_id, doctor_id, date, time, status)
-    VALUES('$user_id', '$doctor_id', '$date', '$time','0')";
-    if(mysqli_query($con, $qulii)){
-    //Delete date from available
-    //mysqli_query($con,"DELETE FROM available_dates WHERE id =$availabledate_id");
-    header('location: timeline/timeline.php');
-    }else{
-      echo mysqli_error($con);
-    }
-}
-
-
 
   $query = "SELECT id,name,specialization FROM doctors";
   $result = $con->query($query);
@@ -49,7 +34,7 @@ if (isset($_POST['reserve'])) {
     $docs[] = array("id" => $row['id'], "val" => "Dr. ".$row['name']." | ".$row['specialization']);
   }
 
-  $query = "SELECT * FROM available_dates";
+  $query = "SELECT * FROM available_dates ORDER BY date DESC";
   $result = $con->query($query);
 
   while($row = $result->fetch_assoc()){
@@ -59,6 +44,37 @@ if (isset($_POST['reserve'])) {
 
   $jsonCats = json_encode($docs);
   $jsonSubCats = json_encode($appo);
+
+
+
+
+if (isset($_POST['reserve'])) {
+
+    $doctor_id = mysqli_real_escape_string($con, $_POST['select']);
+
+    $res = mysqli_query($con, 'SELECT * from available_dates WHERE id = "' . $_POST['date'] . '" ');
+    $result1=mysqli_fetch_assoc($res);
+    $date1=$result1['date'];
+    $time1=$result1['time'];
+
+/* SHOW DOCTOR NAME IF YOU WANT
+
+    $res2 = mysqli_query($con, 'SELECT name from doctors WHERE id = "' . $_POST['select'] . '" ');
+    $result2=mysqli_fetch_assoc($res2);
+    $docName=$result2['name'];
+*/
+    $qulii = "INSERT INTO user_reservation (user_id, doctor_id, date, time, status)
+    VALUES('$user_id', '$doctor_id', '$date1', '$time1','0')";
+          mysqli_query($con, 'DELETE from available_dates WHERE id = "' . $_POST['date'] . '" ');
+
+
+    if(mysqli_query($con, $qulii)){
+          header('location: timeline/timeline.php');
+    }else{
+      echo mysqli_error($con);
+    }
+}
+
 
 
 ?>
@@ -82,15 +98,15 @@ if (isset($_POST['reserve'])) {
         var catSelect = this;
         var catid = this.value;
         var subcatSelect = document.getElementById("subcatsSelect");
-        subcatSelect.onchange = updateSubCats2;
+        //subcatSelect.onchange = updateSubCats2;
         subcatSelect.options.length = 0; //delete all options if any present
         subcatSelect.options[0] = new Option("Select Date");
         document.getElementById("subcatsSelect").options[0].disabled = true;
         for(var i = 1; i <= appo[catid].length; i++){
-            subcatSelect.options[i] = new Option(appo[catid][(i-1)].val,appo[catid][(i-1)].id);
+            subcatSelect.options[i] = new Option(appo[catid][(i-1)].val +" | "+appo[catid][(i-1)].val2 ,appo[catid][(i-1)].id);
         }
       }
-
+/*
       function updateSubCats2(){
         //var X = this;
         var Xid = this.value;
@@ -102,8 +118,8 @@ if (isset($_POST['reserve'])) {
         /* Xid --> id of selected row in available date
         {
             subcatSelect2.options[] = new Option(appo[][()].val,appo[][()].id);
-        }*/
-      }
+        }
+      }*/
 
 
     </script>
@@ -152,11 +168,11 @@ if (isset($_POST['reserve'])) {
                                 <select name='date' id='subcatsSelect'>
                                 </select>    
                             </div>
-                            <div class="input-group">
+                            <!--<div class="input-group">
                                 <label for="time">Best time to call you</label><br>
                                 <select name='time' id='subcatsSelect2'>
                                 </select> 
-                            </div>                        
+                            </div>-->                       
                         </div>
 
 
