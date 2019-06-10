@@ -141,6 +141,16 @@ include '../header.php';
 
                 </div>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="text-center">
+                <a href="timeline.php">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="logout.php">Logout</a>
+            </span>
+        </div>
+    </div>
+</div><center>
 
 </body>
 </html>

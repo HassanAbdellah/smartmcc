@@ -117,13 +117,14 @@ include '../header.php';
                         <span class="glyphicon glyphicon-user"></span>
                         <label>My Account </label>
                     </div>
+                    <!--
                     <hr size="80%" noshade>
                     <div class="form-inline form-group input-group ">
                         <input type="search" class="form-control" name="searchText" placeholder="Search user by Email">
                         <div class="input-group-addon">
                             <button type="submit" name="searchUser" style="background-color:transparent; border: transparent" class="glyphicon glyphicon-search"></button>
                         </div>
-                    </div> 
+                    </div> -->
                     <hr size="80%">
                     <div class="input-group">
                         <span class="glyphicon glyphicon-edit"></span>
