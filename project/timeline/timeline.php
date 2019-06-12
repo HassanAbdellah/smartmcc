@@ -3,6 +3,7 @@
 <?php
 session_start();
 require 'connect.php';
+
 if (isset($_SESSION['loginEmail'])) {
     $alt = $_SESSION['file_name'].'.'.$_SESSION['file_ext'];
 } else {

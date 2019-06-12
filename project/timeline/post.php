@@ -3,11 +3,28 @@
 <?php
 session_start();
 require 'connect.php';
+//$notif="False";
 if (isset($_SESSION['loginEmail'])) {
     $alt = $_SESSION['file_name'].'.'.$_SESSION['file_ext'];
 } else {
     header('../location:error.php');
 }
+/*
+date_default_timezone_set('africa/cairo');
+$Currdate = date("Y-m-d h:i:sa", strtotime("now"));
+$lastDate = "2019-06-10 15:44:00";
+$diff = abs(strtotime($Currdate) - strtotime($lastDate));
+if($diff<86400){
+	$notif = "True";
+}
+
+$query = "SELECT id, ResDate from user_reservation ORDER BY ResDate DESC";
+$result = $con->query($query);
+
+while($row = $result->fetch_assoc()){
+$appo[$row['id']][] = array("id" => $row['id'], "val" => $row['ResDate']);
+}
+*/
 ?>
 
 <html lang="en">

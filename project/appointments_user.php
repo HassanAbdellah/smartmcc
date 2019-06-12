@@ -9,6 +9,7 @@
     include 'header.php';
     session_start();
     require 'config.php';
+    $doctor_id="";
     $mmm = "SELECT * FROM userinfo WHERE email = '" . $_SESSION['loginEmail'] . "'";
     $sql_user=mysqli_query($con,$mmm);
     if(mysqli_num_rows($sql_user)){
@@ -61,18 +62,24 @@
                     ORDER BY doctor_id
                     ");
 
+			    
+
 
 
                 // display data in table
                 echo "<table border='1' cellpadding='10'>";
 
-                echo "<tr> <th>ID</th> <th>USER ID</th> <th>DOCTOR ID</th> <th>DATE</th> <th>TIME</th> <th></th> <th></th></tr>";
+                echo "<tr> <th>Appointment ID</th> <th>User ID</th> <th>Doctor Name</th> <th>DATE</th> <th>TIME</th>  <th></th></tr>";
 
 
                 // loop through results of database query, displaying them in the table
 
                 while($row = mysqli_fetch_array( $result )) {
 
+
+				    $res2 = mysqli_query($con, 'SELECT name from doctors WHERE id = "'.$row['doctor_id'].'"');
+				    $result2=mysqli_fetch_assoc($res2);
+				    $docName=$result2['name'];
 
 
                 // echo out the contents of each row into a table
@@ -83,13 +90,13 @@
 
                 echo '<td>' . $row['user_id'] . '</td>';
 
-                echo '<td>' . $row['doctor_id'] . '</td>';
+                echo '<td>' . $docName . '</td>';
 
                 echo '<td>' . $row['date'] . '</td>';
 
                 echo '<td>' . $row['time'] . '</td>';
 
-                echo '<td><a href="update_appointment.php?id=' . $row['id'] . '">Edit</a></td>';
+                //echo '<td><a href="update_appointment.php?id=' . $row['id'] . '">Edit</a></td>';
 
                 echo '<td><a href="delete_appointment.php?id=' . $row['id'] . '">Delete</a></td>';
 

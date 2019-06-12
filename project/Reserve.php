@@ -16,6 +16,8 @@ $time ="";
 $doctor_id ="";
 $row = "";
 $resID = "";
+date_default_timezone_set('africa/cairo');
+$Resdate = date("Y-m-d h:i:sa", strtotime("now"));
 
 
 $mmm = "SELECT * FROM userinfo WHERE email = '" . $_SESSION['loginEmail'] . "'";
@@ -63,8 +65,8 @@ if (isset($_POST['reserve'])) {
     $result2=mysqli_fetch_assoc($res2);
     $docName=$result2['name'];
 */
-    $qulii = "INSERT INTO user_reservation (user_id, doctor_id, date, time, status)
-    VALUES('$user_id', '$doctor_id', '$date1', '$time1','0')";
+    $qulii = "INSERT INTO user_reservation (user_id, doctor_id, date, time, status,Resdate)
+    VALUES('$user_id', '$doctor_id', '$date1', '$time1','0','$Resdate')";
           mysqli_query($con, 'DELETE from available_dates WHERE id = "' . $_POST['date'] . '" ');
 
 

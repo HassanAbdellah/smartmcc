@@ -56,13 +56,20 @@
                 // display data in table
                 echo "<table border='1' cellpadding='10'>";
 
-                echo "<tr> <th>ID</th> <th>USER ID</th> <th>DOCTOR ID</th> <th>DATE</th> <th>TIME</th> <th></th> <th></th></tr>";
+                echo "<tr> <th>ID</th> <th>USER ID</th> <th>DOCTOR ID</th> <th>DATE</th> <th>TIME</th>  <th></th></tr>";
 
 
                 // loop through results of database query, displaying them in the table
 
                 while($row = mysqli_fetch_array( $result )) {
 
+                    $res2 = mysqli_query($con, 'SELECT name from doctors WHERE id = "'.$row['doctor_id'].'"');
+                    $result2=mysqli_fetch_assoc($res2);
+                    $docName=$result2['name'];
+
+                    $res3 = mysqli_query($con, 'SELECT * from userinfo WHERE id = "'.$row['user_id'].'"');
+                    $result3=mysqli_fetch_assoc($res3);
+                    $patientName=$result3['fName']." ".$result3['lName'];
 
 
                 // echo out the contents of each row into a table
@@ -71,15 +78,15 @@
 
                 echo '<td>' . $row['id'] . '</td>';
 
-                echo '<td>' . $row['user_id'] . '</td>';
+                echo '<td>' . $patientName . '</td>';
 
-                echo '<td>' . $row['doctor_id'] . '</td>';
+                echo '<td>' . $docName . '</td>';
 
                 echo '<td>' . $row['date'] . '</td>';
 
                 echo '<td>' . $row['time'] . '</td>';
 
-                echo '<td><a href="edit.php?id=' . $row['id'] . '">Edit</a></td>';
+                //echo '<td><a href="update_appointment.php?id=' . $row['id'] . '">Edit</a></td>';
 
                 echo '<td><a href="delete.php?id=' . $row['id'] . '">Delete</a></td>';
 

@@ -60,7 +60,7 @@ $con->close();
                         <div class="col-md-4"></div>
                         <div class="col-md-4">
                             <label for="file" class="col-sm-10 control-label">
-                                <img src="img/dummy.png" style="border:2px solid darkgray; border-radius:30%; height: 100px; width:100px;"><br>
+                                <img src="img/test.jpg" style="border:2px solid darkgray; border-radius:30%; height: 100px; width:100px;"><br>
                                 <label for="file" class="glyphicon glyphicon-edit">Upload pic</label>
                             </label>
                             <input type="file" class="form-control" id="file" name="file" style="display: none" value="">
