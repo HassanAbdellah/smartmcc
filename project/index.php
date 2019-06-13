@@ -7,7 +7,7 @@
 <?php
 session_start();
     if(isset($_SESSION['loginEmail'])){
-        header('location:welcome.php');
+        header('location:timeline/timeline.php');
     }
     else{
         header('location:home.php');

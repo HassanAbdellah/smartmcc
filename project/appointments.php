@@ -56,7 +56,7 @@
                 // display data in table
                 echo "<table border='1' cellpadding='10'>";
 
-                echo "<tr> <th>ID</th> <th>USER ID</th> <th>DOCTOR ID</th> <th>DATE</th> <th>TIME</th>  <th></th></tr>";
+                echo "<tr> <th>Appointmetn ID</th> <th>User Name</th> <th>Doctor Name</th> <th>Date</th> <th>Time</th>  <th></th></tr>";
 
 
                 // loop through results of database query, displaying them in the table

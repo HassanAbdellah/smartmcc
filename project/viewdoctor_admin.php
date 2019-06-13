@@ -1,7 +1,7 @@
 <!--
 /**
  * Created by Hassan Abdella.
- * Date: 02/05/2019
+ * Date: 13/06/2019
  */-->
  
 <?php
@@ -9,6 +9,12 @@
 ?>
 
 <style>
+	html *
+	{
+	   font-size: 15px !important;
+	   /*color: #000 !important;*/
+	   font-family: Arial !important;
+	}
     .userbox {
         background: #fff none repeat scroll 0 0;
         box-shadow: 0 0 1px;
@@ -16,9 +22,30 @@
         margin-bottom: 20px;
     }
     .img{
-        height: 100px;
-        width: 100px;
+    	border-radius: 50%;
+        height: 150px;
+        width: 150px;
     }
+	.grid-container {
+		border: 2px solid red;
+  		border-radius: 5px;
+	  display: grid;
+	  grid-template-columns: auto auto auto auto auto auto;
+	  grid-gap: 10px;
+	  padding: 10px;
+	  margin: 10px;
+	}
+
+	.grid-container > div {
+
+	  /*text-align: center;*/
+	  padding: 20px 0;
+	}
+
+	.item1 {
+	  grid-column: 1 / 3;
+	}
+
 
 </style>
 <br>
@@ -52,10 +79,11 @@
         $phones=$result['phones'];
         $fees=$result['fees'];
         $img=$file_name.'.'.$file_ext;
+        $select="";
         
 
 
-        $sql_doc=mysqli_query($con,"SELECT * FROM available_dates WHERE doctor_id = $id");
+        $sql_doc=mysqli_query($con,"SELECT * FROM available_dates WHERE doctor_id = $id ORDER BY date ASC, time ASC");
         if(mysqli_num_rows($sql_doc)){
             $select= '<select name="select">';
             while($rs=mysqli_fetch_array($sql_doc)){
@@ -65,53 +93,26 @@
         $select.='</select>';
 
 
-        echo"<div class='row'>
-                <div class='col-sm-2'></div>
-                <div class='col-sm-12 userbox'>
-                    <div class='col-sm-4'>
-                        <div class='row'>
-                            <div class='input-group'><span class='glyphicon glyphicon-user'></span>
-                                <label>Doctor $id: <b><font color='green'> $name </font></b></label>
-                            </div>
-                            <div class='input-group'><span class='glyphicon glyphicon-pencil'></span>
-                                <label>specialization: <b><font color='green'> $specialization </font></b></label>
-                            </div>                            
-                            <div class='input-group'><span class='glyphicon glyphicon-file'></span>
-                                <label>informations: <b><font color='green'> $info </font></b></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-sm-4'>
-                        <div class='row'>
-                            <div class='input-group'><span class='glyphicon glyphicon-pushpin'></span>
-                                <label>Address: <b><font color='green'>$location_text</font></b></label>
-                            </div>
-                        </div>
-                        <div class='row'>
-
-                            <img src='img/Doctors/$img' class='img img-circle'>
-                        </div>
-                    </div>
-                    <div class='col-sm-4'>
-                        <div class='row'>
-                            <div class='input-group'><span class='glyphicon glyphicon-earphone'></span>
-                                <label>Mobile: <b><font color='green'> $phones </font></b></label>
-                            </div>
-                            <div class='input-group'><span class='glyphicon glyphicon-usd'></span>
-                                <label>Fee: <b><font color='green'>$fees</font></b></label>
-                            </div>
-                            <div class='input-group'><span class='glyphicon glyphicon-time'></span>
-                                <label>Working time: <b><font color='green'>$working_time</font></b></label>
-                            </div>
-                            <div class='input-group'><span class='glyphicon glyphicon-time'></span>
-                                <label>available dates: </label><br>".$select."</div>
-                            </div>
-
-                    </div>
-  
-                </div>
-                <div class='col-sm-2'></div>
-            </div>";
+        echo"<div class='grid-container'>
+               <div class='item1'>
+        			<img src='img/Doctors/$img' class='img'>
+        		</div><br>
+        		<div>
+        			<div><span style=' font-weight:bold'> Doctor: </span>".$name."</div>
+        			<div><span style=' font-weight:bold'>Specialization: </span>".$specialization."</div>
+        			<div><span style=' font-weight:bold'>Informations: </span>".$info."</div>
+        		</div>
+        		<div class='column'>
+        			<div><span style=' font-weight:bold'>Location: </span>".$location_text."</div>
+        			<div><span style=' font-weight:bold'>Phone: </span>".$phones."</div>
+        			<div><span style=' font-weight:bold'>Fees: </span>".$fees."</div>
+        		</div>
+        		<div class='column'>
+        			<div><span style=' font-weight:bold'>Working Time : </span>".$working_time."</div>
+        			<div><span style=' font-weight:bold'>Available Dates: </span>".$select."</div>
+        			<div><span style=' font-weight:bold'><a href=#>Edit</a></span></div>
+        		</div>
+        	</div>";
         $num--;
         $select="";
     }
@@ -123,14 +124,14 @@
 
 
 <div class="container">
-    <div class="row">
+    <center><div class="row">
         <div class="col-sm-12">
             <span class="text-center">
                 <a href="welcome_admin.php">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="logout.php">Logout</a>
             </span>
         </div>
-    </div>
+    </div></center><br>
 </div>
 
 

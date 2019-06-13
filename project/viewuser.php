@@ -97,12 +97,12 @@
 </div>
 
 <div class="container">
-    <div class="row">
+    <center><div class="row">
         <div class="col-sm-12">
             <span class="text-center">
                 <a href="welcome_Admin.php">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="logout.php">Logout</a>
             </span>
         </div>
-    </div>
+    </div></center><br>
 </div>

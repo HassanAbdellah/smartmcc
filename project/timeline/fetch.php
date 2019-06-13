@@ -47,7 +47,7 @@ while($row = mysqli_fetch_array($result))
     $notifi="very soon";
     $counter++;
   }
-
+  
   $output .= '
   <li>
   <a href="#">

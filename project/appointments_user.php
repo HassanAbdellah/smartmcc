@@ -39,12 +39,28 @@
         max-width: 100%;
     
     }
-    table, th, td {
-        border: 3px solid black;
-        background-color: lightgrey;
-        margin: 5px;
-        padding: 5px;
-}
+
+	table {
+	  width:100%;
+	}
+	table, th, td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	}
+	th, td {
+	  padding: 15px;
+	  text-align: left;
+	}
+	table#t01 tr:nth-child(even) {
+	  background-color: #eee;
+	}
+	table#t01 tr:nth-child(odd) {
+	 background-color: #fff;
+	}
+	table#t01 th {
+	  background-color: black;
+	  color: white;
+	}
 
 </style>
 <html>
@@ -54,7 +70,7 @@
     <body>
         <center>
         <div class='userbox'>
-        <H3>Appointment</H3><br>
+        <H2>Appointments</H2><br>
             <?php
             if (isset($_SESSION['loginEmail'])) {
                 $result = mysqli_query($con, "SELECT * FROM user_reservation 
@@ -62,14 +78,10 @@
                     ORDER BY doctor_id
                     ");
 
-			    
-
-
-
                 // display data in table
-                echo "<table border='1' cellpadding='10'>";
+                echo "<table border='1' cellpadding='10' id='t01'>";
 
-                echo "<tr> <th>Appointment ID</th> <th>User ID</th> <th>Doctor Name</th> <th>DATE</th> <th>TIME</th>  <th></th></tr>";
+                echo "<tr><th><center>Appointment ID</center></th> <th><center>User ID</center></th> <th><center>Doctor Name</center></th> <th><center>DATE</center></th> <th><center>TIME</center></th>  <th></th><th></th></tr>";
 
 
                 // loop through results of database query, displaying them in the table
@@ -86,19 +98,31 @@
 
                 echo "<tr>";
 
-                echo '<td>' . $row['id'] . '</td>';
+                echo '<td><center>' . $row['id'] . '</center></td>';
 
-                echo '<td>' . $row['user_id'] . '</td>';
+                echo '<td><center>' . $row['user_id'] . '</center></td>';
 
-                echo '<td>' . $docName . '</td>';
+                echo '<td><center>' . $docName . '</center></td>';
 
-                echo '<td>' . $row['date'] . '</td>';
+                echo '<td><center>' . $row['date'] . '</center></td>';
 
-                echo '<td>' . $row['time'] . '</td>';
+                echo '<td><center>' . $row['time'] . '</center></td>';
 
                 //echo '<td><a href="update_appointment.php?id=' . $row['id'] . '">Edit</a></td>';
 
-                echo '<td><a href="delete_appointment.php?id=' . $row['id'] . '">Delete</a></td>';
+                echo '<td><center><a href="delete_appointment.php?id=' . $row['id'] . '">Delete</a></center></td>';
+                if($row['confirmed']==0)
+                {
+                	echo '<td><center><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="EZU8656SG67XN">
+						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+						</form></center></td>';
+				}
+				else {
+					echo '<td><center></center></td>';
+				}
 
                 echo "</tr>";
 

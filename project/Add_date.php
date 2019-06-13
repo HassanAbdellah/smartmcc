@@ -25,7 +25,7 @@ $sql = "INSERT INTO available_dates (doctor_id,date,time)
 VALUES ('".$_POST["id"]."', '".$_POST["date"]."', '".$_POST["time"]."')";
 
 if ($con->query($sql) === TRUE) {
-        header('location:welcome_Admin.php');
+        header('location:Add_date.php');
 } else {
     echo "Error: " . $sql . "<br>" . $con->error;
 }
@@ -56,7 +56,7 @@ $con->close();
                                 <input type='time'  id='time' name='time' placeholder='time'/>
                             <div class='row'>
                             <br>
-                                    <input type='submit' id'=saveChange' name='saveChange' class='' onclick='return checkUpdate()' value='Save Changes'>
+                                    <input type='submit' id='saveChange' name='saveChange' class='' onclick='return checkUpdate()' value='Save Changes'>
                             </div>
             </form>
 <br>

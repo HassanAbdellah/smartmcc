@@ -16,6 +16,7 @@ $time ="";
 $doctor_id ="";
 $row = "";
 $resID = "";
+$val = "";
 date_default_timezone_set('africa/cairo');
 $Resdate = date("Y-m-d h:i:sa", strtotime("now"));
 
@@ -36,7 +37,7 @@ if(mysqli_num_rows($sql_user)){
     $docs[] = array("id" => $row['id'], "val" => "Dr. ".$row['name']." | ".$row['specialization']);
   }
 
-  $query = "SELECT * FROM available_dates ORDER BY date DESC";
+  $query = "SELECT * FROM available_dates ORDER BY date ASC, time ASC";
   $result = $con->query($query);
 
   while($row = $result->fetch_assoc()){
@@ -54,7 +55,9 @@ if (isset($_POST['reserve'])) {
 
     $doctor_id = mysqli_real_escape_string($con, $_POST['select']);
 
-    $res = mysqli_query($con, 'SELECT * from available_dates WHERE id = "' . $_POST['date'] . '" ');
+    $val = $_POST['date0'];
+
+    $res = mysqli_query($con, 'SELECT * from available_dates WHERE id = "' . $val . '" ');
     $result1=mysqli_fetch_assoc($res);
     $date1=$result1['date'];
     $time1=$result1['time'];
@@ -67,7 +70,7 @@ if (isset($_POST['reserve'])) {
 */
     $qulii = "INSERT INTO user_reservation (user_id, doctor_id, date, time, status,Resdate)
     VALUES('$user_id', '$doctor_id', '$date1', '$time1','0','$Resdate')";
-          mysqli_query($con, 'DELETE from available_dates WHERE id = "' . $_POST['date'] . '" ');
+          mysqli_query($con, 'DELETE from available_dates WHERE id = "' . $val . '" ');
 
 
     if(mysqli_query($con, $qulii)){
@@ -102,27 +105,28 @@ if (isset($_POST['reserve'])) {
         var subcatSelect = document.getElementById("subcatsSelect");
         //subcatSelect.onchange = updateSubCats2;
         subcatSelect.options.length = 0; //delete all options if any present
-        subcatSelect.options[0] = new Option("Select Date");
+        subcatSelect.options[0] = new Option("Select Date","");
         document.getElementById("subcatsSelect").options[0].disabled = true;
         for(var i = 1; i <= appo[catid].length; i++){
             subcatSelect.options[i] = new Option(appo[catid][(i-1)].val +" | "+appo[catid][(i-1)].val2 ,appo[catid][(i-1)].id);
         }
       }
-/*
-      function updateSubCats2(){
-        //var X = this;
-        var Xid = this.value;
-        //document.write(Xid);
-        var subcatSelect2 = document.getElementById("subcatsSelect2");
-        subcatSelect2.options.length = 0; //delete all options if any present
-        subcatSelect2.options[0] = new Option("Select Time");
-        document.getElementById("subcatsSelect2").options[0].disabled = true;
-        /* Xid --> id of selected row in available date
-        {
-            subcatSelect2.options[] = new Option(appo[][()].val,appo[][()].id);
-        }
-      }*/
 
+
+      function validateform(){  
+          var doc=document.myform.select.value;  
+          var dat=document.myform.date1.value;  
+            
+          if (doc==null || doc==""){  
+            alert("Doctor can't be blank");  
+            return false;  
+          }
+          else if(dat==null || dat==""){  
+            alert("date can't be blank");  
+            return false;  
+            }  
+    }  
+    
 
     </script>
   </head>
@@ -137,7 +141,7 @@ if (isset($_POST['reserve'])) {
     <center><h1>Doctor Appointment Form</h1><center>
     <div class="container">
         <div class="container-fluid">
-            <form action="Reserve.php" method="post">
+            <form name="myform" action="Reserve.php" method="post" onsubmit="required()">
                 <div class="row">
                     <div class="col-sm-12">
 
@@ -161,13 +165,13 @@ if (isset($_POST['reserve'])) {
                                 ?>
                         </div>
                         <div>
-                            <select name='select' id='categoriesSelect'>
+                            <select name='select' id='categoriesSelect' required>
                                 <option disabled selected value>Select Doctor</option>
                             </select>
 
                             <div class="input-group">
                                 <label for="date">Available Day</label><br>
-                                <select name='date' id='subcatsSelect'>
+                                <select name='date0' id='subcatsSelect' required>
                                 </select>    
                             </div>
                             <!--<div class="input-group">
