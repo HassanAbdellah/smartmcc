@@ -110,7 +110,7 @@
         		<div class='column'>
         			<div><span style=' font-weight:bold'>Working Time : </span>".$working_time."</div>
         			<div><span style=' font-weight:bold'>Available Dates: </span>".$select."</div>
-        			<div><span style=' font-weight:bold'><a href=#>Edit</a></span></div>
+        			<div><span style=' font-weight:bold'><a href='editDoc/info_doc.php?id=".$id."'>Edit</a></span></div>
         		</div>
         	</div>";
         $num--;

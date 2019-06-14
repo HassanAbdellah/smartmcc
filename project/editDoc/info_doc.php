@@ -11,17 +11,31 @@
 session_start();
 require '../config.php';
 
-if ($_SESSION['gender']==0) {
-    $gen = "Male";
-} elseif ($_SESSION['gender']==1) { 
-    $gen = "Female";
-}
-
 if (isset($_SESSION['loginEmail'])) {
-    $alt = $_SESSION['file_name'].'.'.$_SESSION['file_ext'];
-} else {
+    $id=$_GET['id'];
+    $mmm = "SELECT * FROM doctors WHERE id = '" . $id . "'";
+    $sql_user=mysqli_query($con,$mmm);
+    if(mysqli_num_rows($sql_user)){
+        $row = mysqli_fetch_array($sql_user);
+        $alt = $row['file_name'].'.'.$row['file_ext'];
+        $name = $row['name'];
+        $specialization = $row['specialization'];
+        $info = $row['info'];
+        $working_time = $row['working_time'];
+        $location_text = $row['location_text'];
+        $phones = $row['phones'];
+        $fees = $row['fees'];
+
+
+    } else {
     header('location:../error.php');
 }
+
+
+}
+
+
+
 include '../header.php';
 ?>
 
@@ -49,61 +63,50 @@ include '../header.php';
                     <!----- Info ---->
                 <div class="col-sm-4">
                     <div class="input-group">
-                        <span class="glyphicon glyphicon-user"></span>
-                        <label><?php echo "Hello: <b><font color='green'>" . $_SESSION['fName'] . " " . $_SESSION['lName'] . "</font> </b>" ?></label>
-                        <a  href="edit/editName.php"><span class="glyphicon glyphicon-edit"></span></a>
+                        <label><?php echo "Doctor: <b><font color='green'>" . $name . "</font> </b>" ?></label>
+                        <?php echo "<a  href='editDocName.php?id=".$id."'><span class='glyphicon glyphicon-edit'></span></a>"; ?>
 
                     </div>
                     <hr size="80%" noshade>
                     <div class="input-group">
-                        <span class="glyphicon glyphicon-envelope"></span>
-                        <label><?php echo "Email: <b><font color='green'>" . $_SESSION['loginEmail'] . "</font></b>" ?></label>
-
-
-                    </div>
-                    <hr size="80%">
-                    <div class="input-group">
-                        <span class="glyphicon glyphicon-user"></span>
-                        <label><?php echo "Gender: <b><font color='green'>" . $gen . "</font></b>" ?></label>
-                        <a  href="edit/editGender.php"><span class="glyphicon glyphicon-edit"></span></a>
+                        <label><?php echo "Specialization: <b><font color='green'>" . $specialization . "</font></b>" ?></label>
+                        <?php echo "<a  href='editDocSpec.php?id=".$id."'><span class='glyphicon glyphicon-edit'></span></a>"; ?>
 
                     </div>
                     <hr size="80%">
                     <div class="input-group">
-                        <span class="glyphicon glyphicon-earphone"></span>
-                        <label><?php echo "Mobile: <b><font color='green'>" . $_SESSION['mobile'] . "</font></b>" ?></label>
-                        <a  href="edit/editMobile.php"><span class="glyphicon glyphicon-edit"></span></a>
+                        <label><?php echo "Informations: <b><font color='green'>" . $info . "</font></b>" ?></label>
+                        <?php echo "<a  href='editDocInfo.php?id=".$id."'><span class='glyphicon glyphicon-edit'></span></a>"; ?>
+
                     </div>
                     <hr size="80%">
                     <div class="input-group">
-                        <span class="glyphicon glyphicon-home"></span>
-                        <label><?php echo "Address: <b><font color='green'>" . $_SESSION['address'] . "</font></b>" ?></label>
-                        <a  href="edit/editAddress.php"><span class="glyphicon glyphicon-edit"></span></a>
+                        <label><?php echo "Working Time: <b><font color='green'>" . $working_time . "</font></b>" ?></label>
+                        <?php echo "<a  href='editDocWT.php?id=".$id."'><span class='glyphicon glyphicon-edit'></span></a>"; ?>
                     </div>
                     <hr size="80%">
                     <div class="input-group">
-                        <span class="glyphicon glyphicon-time"></span>
-                        <label><?php echo "Birth date: <b><font color='green'>" . $_SESSION['bdate'] . "</font></b>" ?></label>
-                        <a  href="edit/editBD.php"><span class="glyphicon glyphicon-edit"></span></a>
+                        <label><?php echo "Location: <b><font color='green'>" . $location_text . "</font></b>" ?></label>
+                        <?php echo "<a  href='editDocLoc.php?id=".$id."'><span class='glyphicon glyphicon-edit'></span></a>"; ?>
                     </div>
                     <hr size="80%">
                     <div class="input-group">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                        <label><?php echo "Reg. Date: <b><font color='green'>" . $_SESSION['reg_date'] . "</font></b>" ?></label>
+                        <label><?php echo "Phone: <b><font color='green'>" . $phones . "</font></b>" ?></label>
+                        <?php echo "<a  href='editDocPho.php?id=".$id."'><span class='glyphicon glyphicon-edit'></span></a>"; ?>
                     </div>
                     <hr size="80%">
                     <div class="input-group">
-                        <span class="glyphicon glyphicon-time"></span>
-                        <label><?php echo "Last update: <b><font color='green'>" . $_SESSION['upd_date'] . "</font></b>" ?></label>
+                        <label><?php echo "Fees: <b><font color='green'>" . $fees . "</font></b>" ?></label>
+                        <?php echo "<a  href='editDocFee.php?id=".$id."'><span class='glyphicon glyphicon-edit'></span></a>"; ?>
                     </div>
                     <hr size="80%">
                 </div>
                 <!-- Profile pic -->
                 <div class="col-sm-5">
                     <div class="col-sm-12 img-circle" align="middle">
-                        <a  href="edit/editPic.php"><img src="../img/uploads/<?php echo $alt ?>" class="img-circle" height="250px" width="250px"
-                             alt="Profile pic">
-                             <span class="glyphicon glyphicon-edit"></span></a>
+                        <?php echo "<a  href='editDocIMG.php?id=".$id."'><img src='../img/Doctors/". $alt ."' class='img-circle' height='250px' width='250px'
+                             alt='Profile pic'>"; ?>
+                             <span class='glyphicon glyphicon-edit'></span></a>
 
                     </div>
 

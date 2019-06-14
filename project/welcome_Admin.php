@@ -83,8 +83,8 @@ include 'header.php';
                     <!-- Profile pic -->
                 <div class="col-sm-5">
                     <div class="col-sm-12 img-circle" align="middle">
-                        <img src="img/admins/<?php echo $alt ?>" class="img-circle" height="250px" width="250px"
-                             alt="Profile pic">
+                        <?php echo "<img src='img/admins/".$alt."' class='img-circle' height='250px' width='250px'
+                             alt='Profile pic'>"; ?>
                     </div>
                 </div>
                     <!----- Info ---->
