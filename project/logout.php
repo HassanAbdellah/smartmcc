@@ -13,5 +13,5 @@
         setcookie('loginEmail',$loginEmail, time()-1);
         setcookie('loginPassword',$loginPassword, time()-1);
     }
-header('location:index.php');
+header('location:Home.php');
 ?>

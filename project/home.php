@@ -46,6 +46,7 @@ if(isset($_REQUEST['login'])){
             $reg_date=$result['reg_date'];
             $upd_date=$result['upd_date'];
 
+        $_SESSION['user']="user";
         $_SESSION['loginEmail']=$loginEmail;
         $_SESSION['fName']=$fName;
         $_SESSION['lName']=$lName;

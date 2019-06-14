@@ -43,7 +43,6 @@ if(isset($_REQUEST['login'])){
             $file_name=$result['file_name'];
             $file_ext=$result['file_ext'];
 
-
         $_SESSION['loginEmail']=$loginEmail;
         $_SESSION['fName']=$fName;
         $_SESSION['lName']=$lName;
@@ -80,6 +79,7 @@ if (isset($_FILES['file']['name'])) {
 }
 include 'header.php';
 ?>
+
                                 <!-----Remaining Login form --------->
                                 <label for="loginEmail" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">

@@ -53,7 +53,7 @@
         <li><a href="#restaurant-menu" class="page-scroll">Doctors</a></li>
         <li><a href="#portfolio" class="page-scroll">Gallery</a></li>
         <li><a href="#call-reservation" class="page-scroll">Contact</a></li>
-        <li><a href="http://localhost/SmartMCC/project/index.php" target="_blank">Log in || Sign Up</a></li>
+        <li><a href="http://localhost/SmartMCC/project/Home.php" target="_blank">Log in || Sign Up</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
@@ -212,7 +212,7 @@
 <!-- Call Reservation Section -->
 <div id="call-reservation" class="text-center">
   <div class="container">
-    <h2>Want to make a reservation? Call <strong>01068478576</strong> or <a target="_blank" style="color: Gold;" href="../project/index.php"><strong>Log in</strong></a>
+    <h2>Want to make a reservation? Call <strong>01068478576</strong> or <a target="_blank" style="color: Gold;" href="../project/Home.php"><strong>Log in</strong></a>
     <strong><a href="http://localhost/project/Reserve.php" style ="visibility:hidden">Reservation</a></strong></h2>  
   </div>
 </div>
