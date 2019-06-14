@@ -54,7 +54,7 @@ $con->close();
     <div class="col-sm-8">
         <div class="row">
             <div class="text-center"><span class="lead">Add Doctor</span> </div>
-            <form role="form" method="post" class="form-horizontal" enctype="multipart/form-data"><br>
+            <form name="myform" role="form" method="post" class="form-horizontal" enctype="multipart/form-data"><br>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-4"></div>
@@ -63,42 +63,42 @@ $con->close();
                                 <img src="img/test.jpg" style="border:2px solid darkgray; border-radius:30%; height: 100px; width:100px;"><br>
                                 <label for="file" class="glyphicon glyphicon-edit">Upload pic</label>
                             </label>
-                            <input type="file" class="form-control" id="file" name="file" style="display: none" value="">
+                            <input type="file" class="form-control" id="file" name="file" style="display: none" value="" required>
                         </div>
                         <div class="col-md-4"></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" id="newName" name="newName" placeholder="Full Name"/>
+                        <input type="text" class="form-control" id="newName" name="newName" placeholder="Full Name" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="speci" name="speci" placeholder="specification"/>
+                        <input type="text" class="form-control" id="speci" name="speci" placeholder="specification" required/>
                     </div>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="info" name="info" placeholder="informations"/>
+                        <input type="text" class="form-control" id="info" name="info" placeholder="informations" required/>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-6">
-                        <input type="number" class="form-control" id="newMobile" name="newMobile" placeholder="Mobile"/>
+                        <input type="number" class="form-control" id="newMobile" name="newMobile" placeholder="Mobile" required/>
                     </div>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="fees" name="fees" placeholder="fees"/>
+                        <input type="text" class="form-control" id="fees" name="fees" placeholder="fees" required/>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <textarea class="form-control" id="newAddress" name="newAddress" placeholder="Location..." rows="3"></textarea>
+                        <textarea class="form-control" id="newAddress" name="newAddress" placeholder="Location..." rows="3" required></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <input type="text" name="time" class="form-control" id="time" name="time" placeholder="Working Time..."/ >
+                        <input type="text" name="time" class="form-control" id="time" name="time" placeholder="Working Time..." required />
                     </div>
                 </div>
                 <div class="row">

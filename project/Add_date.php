@@ -37,12 +37,12 @@ $con->close();
 <html>
 <body>
 
-            <center><form role='form' method='post' class='form-horizontal' enctype='multipart/form-data'><br>
+            <center><form name="myform" role='form' method='post' class='form-horizontal' enctype='multipart/form-data'><br>
                 Doctor: <br>
                         <?php 
                             $sql_doc=mysqli_query($con,"SELECT id,name,specialization FROM doctors ORDER BY id");
                             if(mysqli_num_rows($sql_doc)){
-                                $select= '<select name="id" id="id">';
+                                $select= '<select name="id" id="id" required>';
                                 while($rs=mysqli_fetch_array($sql_doc)){
                                 $select.='<option value="'.$rs['id'].'">'."DR.".$rs['name']." -".$rs['specialization'].'</option>';
                                 }
@@ -51,9 +51,9 @@ $con->close();
                             echo $select;
                             ?>
                             <br> Date: <br>
-                                <input type='date'  id='date' name='date' placeholder='date'/>
+                                <input type='date'  id='date' name='date' placeholder='date' required/>
                             <br> Time: <br>
-                                <input type='time'  id='time' name='time' placeholder='time'/>
+                                <input type='time'  id='time' name='time' placeholder='time' required/>
                             <div class='row'>
                             <br>
                                     <input type='submit' id='saveChange' name='saveChange' class='' onclick='return checkUpdate()' value='Save Changes'>

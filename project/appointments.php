@@ -8,6 +8,7 @@
 <?php
     include 'header.php';
 ?>
+
 <style>
     .userbox {
         background: #fff none repeat scroll 0 0;
@@ -25,12 +26,28 @@
         max-width: 100%;
     
     }
+
+    table {
+      width:100%;
+    }
     table, th, td {
-        border: 3px solid black;
-        background-color: lightgrey;
-        margin: 5px;
-        padding: 5px;
-}
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+    table#t01 tr:nth-child(even) {
+      background-color: #eee;
+    }
+    table#t01 tr:nth-child(odd) {
+     background-color: #fff;
+    }
+    table#t01 th {
+      background-color: black;
+      color: white;
+    }
 
 </style>
 <html>
@@ -48,7 +65,7 @@
                 require 'config.php';
                 $result = mysqli_query($con, "SELECT * FROM user_reservation 
                     WHERE user_id IN 
-                    (SELECT id FROM userinfo) ORDER BY doctor_id")
+                    (SELECT id FROM userinfo) ORDER BY doctor_id asc, date asc, time asc")
                 or die(mysqli_error());
 
 
@@ -56,7 +73,7 @@
                 // display data in table
                 echo "<table border='1' cellpadding='10'>";
 
-                echo "<tr> <th>Appointmetn ID</th> <th>User Name</th> <th>Doctor Name</th> <th>Date</th> <th>Time</th>  <th></th></tr>";
+                echo "<tr><th><center>Appointment ID</center></th> <th><center>Patient</center></th> <th><center>Doctor Name</center></th> <th><center>DATE</center></th> <th><center>TIME</center></th>  <th></th><th></th></tr>";
 
 
                 // loop through results of database query, displaying them in the table
@@ -76,19 +93,28 @@
 
                 echo "<tr>";
 
-                echo '<td>' . $row['id'] . '</td>';
+                echo '<td><center>' . $row['id'] . '</center></td>';
 
-                echo '<td>' . $patientName . '</td>';
+                echo '<td><center>' . $patientName . '</center></td>';
 
-                echo '<td>' . $docName . '</td>';
+                echo '<td><center>' . $docName . '</center></td>';
 
-                echo '<td>' . $row['date'] . '</td>';
+                echo '<td><center>' . $row['date'] . '</center></td>';
 
-                echo '<td>' . $row['time'] . '</td>';
+                echo '<td><center>' . $row['time'] . '</center></td>';
 
                 //echo '<td><a href="update_appointment.php?id=' . $row['id'] . '">Edit</a></td>';
 
-                echo '<td><a href="delete.php?id=' . $row['id'] . '">Delete</a></td>';
+                echo '<td><center><a href="delete_appointment.php?id=' . $row['id'] . '">Delete</a></center></td>';
+
+
+                if($row['confirmed']==0)
+                {
+                    echo '<td><center>&#10008</center></td>';
+                }
+                else {
+                    echo '<td><center>&#10004</center></td>';
+                }
 
                 echo "</tr>";
 
