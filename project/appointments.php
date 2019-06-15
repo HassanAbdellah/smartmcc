@@ -71,7 +71,7 @@
 
 
                 // display data in table
-                echo "<table border='1' cellpadding='10'>";
+                echo "<table border='1' cellpadding='10' id='t01'>";
 
                 echo "<tr><th><center>Appointment ID</center></th> <th><center>Patient</center></th> <th><center>Doctor Name</center></th> <th><center>DATE</center></th> <th><center>TIME</center></th>  <th></th><th></th></tr>";
 
