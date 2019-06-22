@@ -6,6 +6,9 @@
  
 <?php
     include 'header.php';
+    session_start();
+    require 'config.php';
+
 ?>
 
 <style>
@@ -61,8 +64,8 @@
         <div class="col-sm-1"></div>
     </div>
 </div><br>
-<center>
-            
+
+<center>    
 <form method="post">
     <div class="container">
         <input type="search" class="form-control" name="searchText" placeholder="Search Doctor" style="width: 25%">
@@ -70,12 +73,13 @@
     </div>
 </form>
 </center>
+<?php 
 
+    include 'searchDoctor.php';
+?>
 <div class="container">
     <?php
-    session_start();
     if (isset($_SESSION['loginEmail'])) {
-    require 'config.php';
     $d = mysqli_query($con, "SELECT * FROM doctors");
     $num = mysqli_num_rows($d);
     while($num>0) {
@@ -134,9 +138,7 @@
     ?>
 </div>
 
-<?php 
-    include 'searchDoctor.php';
-?>
+
 
 <div class="container">
     <div class="row">
