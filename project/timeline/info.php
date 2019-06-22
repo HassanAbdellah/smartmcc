@@ -91,11 +91,11 @@ include '../header.php';
                         <span class="glyphicon glyphicon-calendar"></span>
                         <label><?php echo "Reg. Date: <b><font color='green'>" . $_SESSION['reg_date'] . "</font></b>" ?></label>
                     </div>
-                    <hr size="80%">
+                    <!--<hr size="80%">
                     <div class="input-group">
                         <span class="glyphicon glyphicon-time"></span>
                         <label><?php echo "Last update: <b><font color='green'>" . $_SESSION['upd_date'] . "</font></b>" ?></label>
-                    </div>
+                    </div>-->
                     <hr size="80%">
                 </div>
                 <!-- Profile pic -->

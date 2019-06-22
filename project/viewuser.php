@@ -34,6 +34,7 @@
     session_start();
     if (isset($_SESSION['loginEmail'])) {
     require 'config.php';
+    $gen="";
     $d = mysqli_query($con, "SELECT * FROM userinfo");
     $num = mysqli_num_rows($d);
     while($num>0) {
@@ -49,6 +50,12 @@
         $file_name=$result['file_name'];
         $file_ext=$result['file_ext'];
         $img=$file_name.'.'.$file_ext;
+        if ($gender==0) {
+            $gen = "Male";
+        }
+       elseif ($gender==1) { 
+            $gen = "Female";
+        }
         echo"<div class='row'>
                 <div class='col-sm-2'></div>
                 <div class='col-sm-8 userbox'>
@@ -58,7 +65,7 @@
                                 <label>User $id:<b><font color='green'> $fName $lName </font></b></label>
                             </div>
                             <div class='input-group'><span class='glyphicon glyphicon-user'></span>
-                                <label>Gender :<b><font color='green'> $gender </font></b></label>
+                                <label>Gender :<b><font color='green'> $gen </font></b></label>
                             </div>                            
                             <div class='input-group'><span class='glyphicon glyphicon-envelope'></span>
                                 <label>Email :<b><font color='green'> $email </font></b></label>
