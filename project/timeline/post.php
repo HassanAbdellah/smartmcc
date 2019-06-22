@@ -20,7 +20,7 @@ if(mysqli_num_rows($sql_user)){
 
 
 
-
+/*
 $query2 = "SELECT * FROM receipts WHERE user_id = $user_id ORDER BY date ASC";
 $result2 = mysqli_query($con, $query2);
 if(mysqli_num_rows($result2)){
@@ -33,7 +33,6 @@ if(mysqli_num_rows($result2)){
 }
 
 
-/*
 date_default_timezone_set('africa/cairo');
 $Currdate = date("Y-m-d h:i:sa", strtotime("now"));
 $lastDate = "2019-06-10 15:44:00";
@@ -107,7 +106,7 @@ $appo[$row['id']][] = array("id" => $row['id'], "val" => $row['ResDate']);
 				    $result2=mysqli_fetch_assoc($res2);
 				    $docName=$result2['name'];
 
-				    echo "DR. ".$docName ."";
+				    echo "DR. ".$docName ."<br>".$row_['date']." | ".$row_['time'];
 				    echo "<img src='../img/receipts/".$row_['receipt']."' width='350px' height='400px'>";
 
 				echo"

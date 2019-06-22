@@ -21,7 +21,7 @@
     <?php
     if (isset($_REQUEST['searchUser'])) {
         $searchUser=$_REQUEST['searchText'];
-        $d = mysqli_query($con, "SELECT * FROM userinfo WHERE email LIKE '$searchUser'");
+        $d = mysqli_query($con, "SELECT * FROM userinfo WHERE (email LIKE '$searchUser' OR fName LIKE '$searchUser' OR id = '$searchUser')");
         $num = mysqli_num_rows($d);
         while($num>0) {
             $result = mysqli_fetch_assoc($d);

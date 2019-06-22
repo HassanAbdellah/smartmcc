@@ -38,11 +38,12 @@ include 'header.php';
                     </div>
                     <hr size="80%" noshade>
                     <div class="form-inline form-group input-group ">
-                        <input type="search" class="form-control" name="searchText" placeholder="Search user by Email">
+                        <input type="search" class="form-control" name="searchText" placeholder="Search User or Doctor">
                         <div class="input-group-addon">
                             <button type="submit" name="searchUser" style="background-color:transparent; border: transparent" class="glyphicon glyphicon-search"></button>
                         </div>
                     </div>
+
 
     <!-- Reservation -->
                     <hr size="80%">
@@ -124,4 +125,7 @@ include 'header.php';
         </div>
     </div>
 </div>
-<?php include 'search.php'; ?>
+<?php 
+include 'searchUser.php'; 
+include 'searchDoctor.php';
+?>

@@ -47,6 +47,9 @@
     }
 
 
+
+
+
 </style>
 <br>
 <div class="container">
@@ -58,6 +61,16 @@
         <div class="col-sm-1"></div>
     </div>
 </div><br>
+<center>
+            
+<form method="post">
+    <div class="container">
+        <input type="search" class="form-control" name="searchText" placeholder="Search Doctor" style="width: 25%">
+        <button class="btn" type="submit" name="searchUser">Search</button>
+    </div>
+</form>
+</center>
+
 <div class="container">
     <?php
     session_start();
@@ -121,6 +134,9 @@
     ?>
 </div>
 
+<?php 
+    include 'searchDoctor.php';
+?>
 
 <div class="container">
     <div class="row">
