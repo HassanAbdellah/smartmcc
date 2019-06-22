@@ -3,12 +3,36 @@
 <?php
 session_start();
 require 'connect.php';
+$user_id = "";
 //$notif="False";
 if (isset($_SESSION['loginEmail'])) {
     $alt = $_SESSION['file_name'].'.'.$_SESSION['file_ext'];
 } else {
     header('../location:error.php');
 }
+
+$mmm = "SELECT * FROM userinfo WHERE email = '" . $_SESSION['loginEmail'] . "'";
+$sql_user=mysqli_query($con,$mmm);
+if(mysqli_num_rows($sql_user)){
+    $row = mysqli_fetch_array($sql_user);
+    $user_id = $row['id'];
+}
+
+
+
+
+$query2 = "SELECT * FROM receipts WHERE user_id = $user_id ORDER BY date ASC";
+$result2 = mysqli_query($con, $query2);
+if(mysqli_num_rows($result2)){
+    $row2 = mysqli_fetch_array($result2);
+    $doctor_id2 = $row2['doctor_id'];
+    $receipt = $row2['receipt'];
+    $date2 = $row2['date'];
+    $time2 = $row2['time'];
+
+}
+
+
 /*
 date_default_timezone_set('africa/cairo');
 $Currdate = date("Y-m-d h:i:sa", strtotime("now"));
@@ -37,27 +61,72 @@ $appo[$row['id']][] = array("id" => $row['id'], "val" => $row['ResDate']);
 </head>
 <body>
 	
+            <?php
+            if (isset($_SESSION['loginEmail'])) {
+                $result = mysqli_query($con, "SELECT * FROM user_reservation 
+                    WHERE user_id = '$user_id'  
+                    ORDER BY ResDate DESC
+                    ");
 
-		<ul class="timeline">
-			<li>
-				<div class="avatar">
-          		<img src="../img/uploads/<?php echo $alt ?>">
 
-				</div>
-				<div class="bubble-container">
-					<div class="bubble">
+                $result_ = mysqli_query($con, "SELECT * FROM receipts 
+                	WHERE user_id = $user_id 
+                	ORDER BY date ASC
+                	");
+                // display data in table
 
-						<h3><?php echo ($_SESSION['fName'].$_SESSION['lName']); ?></h3> Bla Bla Bla <h3>Reserve</h3><br/>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, iusto, maxime, ullam autem a voluptate rem quos repudiandae.
+                while($row = mysqli_fetch_array( $result )) {
 
-					</div>
-					
-					<div class="arrow"></div>
-				</div>
-			</li>
-			
-		</ul>
+                echo "
+						<ul class='timeline'>
+							<li>
+								<div class='bubble-container'>
+									<div class='bubble'><h3>".$_SESSION['fName'].$_SESSION['lName']."</h3> Reserves an appointment with DR. ";
+				    $res2 = mysqli_query($con, 'SELECT name from doctors WHERE id = "'.$row['doctor_id'].'"');
+				    $result2=mysqli_fetch_assoc($res2);
+				    $docName=$result2['name'];
 
-	</div>
+				    echo $docName ." at <span style='color:blue'>". $row['date']." ".$row['time']."</span>";
+
+				echo"
+			    	</div>
+			    	<!--<div class='arrow'></div>-->
+			    	</div>
+			    	</li>
+					</ul>";	
+				}
+
+                while($row_ = mysqli_fetch_array( $result_ )) {
+
+                echo "
+						<ul class='timeline'>
+							<li>
+								<div class='bubble-container'>
+									<div class='bubble'>";
+				    $res2 = mysqli_query($con, 'SELECT name from doctors WHERE id = "'.$row_['doctor_id'].'"');
+				    $result2=mysqli_fetch_assoc($res2);
+				    $docName=$result2['name'];
+
+				    echo "DR. ".$docName ."";
+				    echo "<img src='../img/receipts/".$row_['receipt']."' width='350px' height='400px'>";
+
+				echo"
+			    	</div>
+			    	<!--<div class='arrow'></div>-->
+			    	</div>
+			    	</li>
+					</ul>";	
+				}
+
+			}
+
+
+
+
+
+            ?>
+
+
+
 </body>
 </html>
