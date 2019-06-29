@@ -6,7 +6,21 @@
 
 <?php 
 include 'header.php';
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
+$email = generateRandomString()."@doc.com";
+$password = generateRandomString();
+
 ?>
+
 
 <?php
 require 'config.php';
@@ -20,6 +34,7 @@ if (isset($_FILES['file']['name'])) {
     $file_tmp_name = $_FILES['file']['tmp_name'];
     $extension = array("jpg","jpeg", "png", "gif", "svg", "bmp",);
     $file_path= $file_name.'.'.$file_ext;
+
 if (in_array($file_ext, $extension)) {
     move_uploaded_file($file_tmp_name, "img/doctors/".$file_path);
 }
@@ -32,14 +47,39 @@ if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 } 
 
+
+
+
 $sql = "INSERT INTO doctors (name,specialization,info,file_name, file_ext,working_time,location_text,phones,fees)
 VALUES ('".$_POST["newName"]."', '".$_POST["speci"]."', '".$_POST["info"]."','$file_name', '$file_ext', '".$_POST["time"]."', '".$_POST["newAddress"]."', '".$_POST["newMobile"]."', '".$_POST["fees"]."')";
 
+$result = $con->query($sql);
+/*
 if ($con->query($sql) === TRUE) {
-        header('location:welcome_Admin.php');
+        echo "email: ".$email." password: ".$password;
+        //header('location:welcome_Admin.php');
 } else {
     echo "Error: " . $sql . "<br>" . $con->error;
 }
+*/
+$mmm = "SELECT * FROM doctors WHERE phones = '" . $_POST['newMobile'] . "'";
+$sql_user=mysqli_query($con,$mmm);
+if(mysqli_num_rows($sql_user)){
+    $row = mysqli_fetch_array($sql_user);
+    $doctor_id = $row['id'];
+}
+
+$sql2 = "INSERT INTO doctors_accounts (doctor_id,email,password)
+VALUES ('$doctor_id','$email','$password')";
+
+if ($con->query($sql2) === TRUE) {
+        //echo "email: ".$email." password: ".$password;
+        header("location:do.php?id=$doctor_id");
+} else {
+    echo "Error: " . $sql2 . "<br>" . $con->error;
+}
+
+
 
 $con->close();
 }
@@ -101,6 +141,7 @@ $con->close();
                         <input type="text" name="time" class="form-control" id="time" name="time" placeholder="Working Time..." required />
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-12">
                         <input type="submit" id="saveChange" name="saveChange" class="btn btn-primary btn-sm btn-block" onclick="return checkUpdate()" value="Save Changes">
