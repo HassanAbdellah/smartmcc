@@ -44,7 +44,7 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand page-scroll" href="#page-top">Clinix</a> </div>
+      <a class="navbar-brand page-scroll" href="#page-top">SMARTMCC</a> </div>
     
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -66,7 +66,7 @@
       <div class="container">
         <div class="row">
           <div class="intro-text">
-            <h1>Clinix</h1>
+            <h1>SMARTMCC</h1>
             <p>Doctors in all specifications</p>
             <a href="#about" class="btn btn-custom btn-lg page-scroll">Discover Story</a> </div>
         </div>
