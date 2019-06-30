@@ -7,7 +7,7 @@ include('connect.php');
 
 
 date_default_timezone_set('africa/cairo');
-$Currdate = date("Y-m-d h:i:sa", strtotime("now"));
+$Currdate = date("Y-m-d H:i:s", strtotime("now"));
 
 
 
@@ -30,7 +30,7 @@ if($_POST["view"] != '')
    mysqli_query($con, $update_query);
 }
 
-$query = "SELECT * FROM user_reservation WHERE user_id = $user_id ORDER BY date ASC";
+$query = "SELECT * FROM user_reservation WHERE user_id = $user_id ORDER BY date ASC, time ASC";
 $result = mysqli_query($con, $query);
 
 $output = '';
@@ -41,24 +41,28 @@ if(mysqli_num_rows($result) > 0)
 while($row = mysqli_fetch_array($result))
 
 {
-  $lastDate=$row['date'];
-  $diff = abs(strtotime($lastDate) - strtotime($Currdate));
-  if($diff<86400){
-    $notifi="very soon";
-    $counter++;
-  }
-  
-  $output .= '
-  <li>
-  <a href="#">
-  <strong style="color:red;">'.$notifi.'</strong><br />
-  You have an appointment : <strong>'.$row["date"].'</strong><br />
-  <small><em>'.$row["time"].'</em></small>
-  </a>
-  </li>
+  $lastDate=$row['date']." ".$row['time'];
 
-  ';
+  
+  if($Currdate < $lastDate)
+  {
+    $diff = abs(strtotime($lastDate) - strtotime($Currdate));
+    if($diff<172800){
+      $notifi="very soon";
+      $counter++;
+    }
+    $output .= '
+    <li>
+    <a href="#">
+    <strong style="color:red;">'.$notifi.'</strong><br />
+    You have an appointment : <strong>'.$row["date"].'</strong><br />
+    <small><em>'.$row["time"].'</em></small>
+    </a>
+    </li>
+
+    ';
     $notifi="";
+  }
 }
 }
 
