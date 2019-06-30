@@ -18,7 +18,7 @@ $row = "";
 $resID = "";
 $val = "";
 date_default_timezone_set('africa/cairo');
-$Resdate = date("Y-m-d h:i:sa", strtotime("now"));
+$Resdate = date("Y-m-d H:i:s", strtotime("now"));
 
 
 $mmm = "SELECT * FROM userinfo WHERE email = '" . $_SESSION['loginEmail'] . "'";
@@ -41,9 +41,11 @@ if(mysqli_num_rows($sql_user)){
   $result = $con->query($query);
 
   while($row = $result->fetch_assoc()){
-    $appo[$row['doctor_id']][] = array("id" => $row['id'], "val" => $row['date'],"val2" => $row['time']);
+      $currDate = $row['date']." ".$row['time'];
+      if($currDate>=$Resdate){
+        $appo[$row['doctor_id']][] = array("id" => $row['id'], "val" => $row['date'],"val2" => $row['time']);
+      }
   }
-
 
   $jsonCats = json_encode($docs);
   $jsonSubCats = json_encode($appo);
